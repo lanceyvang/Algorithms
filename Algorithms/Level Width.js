@@ -31,17 +31,17 @@ root.children[2].add(5);
 // expect(levelWidth(root)).toEqual([1, 3, 2]);
 
 const levelWidth = root => {
-  let arr = [root, 's'];
+  let arr = [root, 'next'];
   let counters = [0];
 
   while (arr.length > 1) {
-    const node = arr.shift();
+    const removed = arr.shift();
 
-    if (node === 's') {
+    if (removed === 'next') {
       counters.push(0);
-      arr.push('s');
+      arr.push('next');
     } else {
-      arr.push(...node.children);
+      arr.push(...removed.children);
       counters[counters.length - 1]++;
     }
   }
