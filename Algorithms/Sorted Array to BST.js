@@ -9,9 +9,9 @@ class Node {
 const sortedArrayToBST = arr => {
   if (!arr.length) return null;
   const middle = Math.floor(arr.length / 2);
-  let left = arr.slice(0, middle);
-  let right = arr.slice(middle + 1);
-  let root = new Node(arr[middle]);
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle + 1);
+  const root = new Node(arr[middle]);
 
   root.left = sortedArrayToBST(left);
   root.right = sortedArrayToBST(right);
