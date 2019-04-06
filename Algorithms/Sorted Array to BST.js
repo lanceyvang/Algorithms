@@ -11,8 +11,8 @@ const sortedArrayToBST = arr => {
   const middle = Math.floor(arr.length / 2);
   const left = arr.slice(0, middle);
   const right = arr.slice(middle + 1);
-  const root = new Node(arr[middle]);
 
+  const root = new Node(arr[middle]);
   root.left = sortedArrayToBST(left);
   root.right = sortedArrayToBST(right);
   return root;
