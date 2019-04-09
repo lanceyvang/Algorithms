@@ -21,9 +21,9 @@ tree.left.right = q;
 tree.right = new TreeNode(8);
 
 const firstCommonAncestor = (root, p, q) => {
-  if (p.val < root.val && q.val < root.val) {
+  if (root.val > p.val && root.val > q.val) {
     return firstCommonAncestor(root.left, p, q);
-  } else if (p.val > root.val && q.val > root.val) {
+  } else if (root.val < p.val && root.val < q.val) {
     return firstCommonAncestor(root.right, p, q);
   }
   return root;
@@ -35,8 +35,7 @@ const firstCommonAncestor = (root, p, q) => {
       root = root.left;
     } else if (p.val > root.val && q.val > root.val) {
       root = root.right;
-    }
-    return root;
+    } else return root;
   }
   return root;
 };

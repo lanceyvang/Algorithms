@@ -50,9 +50,9 @@ const bstSequences = root => {
   }
 };
 
-function permute(permutation) {
-  var length = permutation.length;
-  let result = [permutation.slice()];
+function permute(array) {
+  var length = array.length;
+  let result = [array.slice()];
   let c = new Array(length).fill(0);
   let i = 1;
   let k;
@@ -61,12 +61,12 @@ function permute(permutation) {
   while (i < length) {
     if (c[i] < i) {
       k = i % 2 && c[i];
-      p = permutation[i];
-      permutation[i] = permutation[k];
-      permutation[k] = p;
+      p = array[i];
+      array[i] = array[k];
+      array[k] = p;
       ++c[i];
       i = 1;
-      result.push(permutation.slice());
+      result.push(array.slice());
     } else {
       c[i] = 0;
       ++i;
