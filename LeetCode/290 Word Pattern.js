@@ -60,6 +60,7 @@ const wordPattern = (pattern, str) => {
       else return false;
     }
   }
+
   return true;
 };
 
