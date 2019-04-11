@@ -29,13 +29,24 @@ const firstCommonAncestor = (root, p, q) => {
   return root;
 };
 
-const firstCommonAncestor = (root, p, q) => {
-  while (root !== null) {
-    if (p.val < root.val && q.val < root.val) {
-      root = root.left;
-    } else if (p.val > root.val && q.val > root.val) {
-      root = root.right;
-    } else return root;
-  }
+// const firstCommonAncestor = (root, p, q) => {
+//   while (root !== null) {
+//     if (p.val < root.val && q.val < root.val) {
+//       root = root.left;
+//     } else if (p.val > root.val && q.val > root.val) {
+//       root = root.right;
+//     } else return root;
+//   }
+//   return root;
+// };
+
+const lowestCommonAncestor = (root, p, q) => {
+  if (!root || root === p || root === q) return root;
+  const left = lowestCommonAncestor(root.left, p, q);
+  const right = lowestCommonAncestor(root.right, p, q);
+  if (!left) return right;
+  if (!right) return left;
   return root;
 };
+
+console.log(lowestCommonAncestor(tree, p, q));
