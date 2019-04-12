@@ -6,7 +6,11 @@ That is, if you cut off the tree at node n, the two trees would be identical.
 */
 
 const checkSubtree = (T1, T2) => {
-  return 'hi';
+  if (T1) {
+    if (T2 === T1) return true;
+    if (T2.val < T1.val) return checkSubtree(T1.left, T2);
+    if (T2.val > T1.val) return checkSubtree(T1.right, T2);
+  }
+  return false;
 };
-
 console.log(checkSubtree(tree1, tree2));

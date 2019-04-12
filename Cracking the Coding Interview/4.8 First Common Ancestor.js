@@ -20,14 +20,14 @@ tree.left.left = p;
 tree.left.right = q;
 tree.right = new TreeNode(8);
 
-const firstCommonAncestor = (root, p, q) => {
-  if (root.val > p.val && root.val > q.val) {
-    return firstCommonAncestor(root.left, p, q);
-  } else if (root.val < p.val && root.val < q.val) {
-    return firstCommonAncestor(root.right, p, q);
-  }
-  return root;
-};
+// const firstCommonAncestor = (root, p, q) => {
+//   if (root.val > p.val && root.val > q.val) {
+//     return firstCommonAncestor(root.left, p, q);
+//   } else if (root.val < p.val && root.val < q.val) {
+//     return firstCommonAncestor(root.right, p, q);
+//   }
+//   return root;
+// };
 
 // const firstCommonAncestor = (root, p, q) => {
 //   while (root !== null) {
