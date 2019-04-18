@@ -25,13 +25,30 @@ Output: false
 //   );
 // };
 
+// const isPalindrome = s => {
+//   s = s.replace(/\W/gi, '').toLowerCase();
+//   let reversed = '';
+//   for (let char of s) {
+//     reversed = char + reversed;
+//   }
+//   return s === reversed;
+// };
+
 const isPalindrome = s => {
-  s = s.replace(/\W/gi, '');
-  let reversed = '';
-  for (let char of s) {
-    reversed = char + reversed;
+  s = s.replace(/\W/gi, '').toLowerCase();
+
+  if (s.length <= 1) return true;
+
+  let center = Math.floor(s.length / 2);
+  let left = s.length % 2 === 0 ? center - 1 : center;
+  let right = center;
+
+  while (left >= 0 && right <= s.length - 1) {
+    if (s[left] !== s[right]) return false;
+    left--;
+    right++;
   }
-  return s.toLowerCase() === reversed.toLowerCase();
+  return true;
 };
 
-console.log(isPalindrome('A man, a plan, a canal: Panama'));
+console.log(isPalindrome(''));
