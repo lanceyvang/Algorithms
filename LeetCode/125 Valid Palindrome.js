@@ -13,17 +13,16 @@ Input: "race a car"
 Output: false
 */
 
-// const isPalindrome = s => {
-//   let filtered = s.replace(/\W/gi, '');
-//   return (
-//     filtered.toLowerCase() ===
-//     filtered
-//       .split('')
-//       .reverse()
-//       .join('')
-//       .toLowerCase()
-//   );
-// };
+const isPalindrome = s => {
+  s = s.replace(/\W/gi, '').toLowerCase();
+  return (
+    s ===
+    s
+      .split('')
+      .reverse()
+      .join('')
+  );
+};
 
 // const isPalindrome = s => {
 //   s = s.replace(/\W/gi, '').toLowerCase();
