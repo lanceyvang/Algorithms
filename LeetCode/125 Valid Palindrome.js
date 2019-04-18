@@ -13,16 +13,17 @@ Input: "race a car"
 Output: false
 */
 
-const isPalindrome = s => {
-  s = s.replace(/\W/gi, '').toLowerCase();
-  return (
-    s ===
-    s
-      .split('')
-      .reverse()
-      .join('')
-  );
-};
+// const isPalindrome = s => {
+//   if (s.length <= 1) return true;
+//   s = s.replace(/\W/gi, '').toLowerCase();
+//   return (
+//     s ===
+//     s
+//       .split('')
+//       .reverse()
+//       .join('')
+//   );
+// };
 
 // const isPalindrome = s => {
 //   s = s.replace(/\W/gi, '').toLowerCase();
@@ -33,19 +34,32 @@ const isPalindrome = s => {
 //   return s === reversed;
 // };
 
-const isPalindrome = s => {
-  s = s.replace(/\W/gi, '').toLowerCase();
+// const isPalindrome = s => {
+//   if (s.length <= 1) return true;
+//   s = s.replace(/\W/gi, '').toLowerCase();
 
+//   let center = Math.floor(s.length / 2);
+//   let left = s.length % 2 === 0 ? center - 1 : center;
+//   let right = center;
+
+//   while (left >= 0 && right <= s.length - 1) {
+//     if (s[left] !== s[right]) return false;
+//     left--;
+//     right++;
+//   }
+//   return true;
+// };
+
+const isPalindrome = s => {
   if (s.length <= 1) return true;
+  s = s.replace(/\W/gi, '').toLowerCase();
 
   let center = Math.floor(s.length / 2);
   let left = s.length % 2 === 0 ? center - 1 : center;
   let right = center;
 
-  while (left >= 0 && right <= s.length - 1) {
+  for (; right < s.length; right++, left--) {
     if (s[left] !== s[right]) return false;
-    left--;
-    right++;
   }
   return true;
 };
