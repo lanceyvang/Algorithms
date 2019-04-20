@@ -17,3 +17,28 @@ Also, "00110011" is not a valid substring because all the 0's (and 1's) are not 
 696. Count Binary Substrings
 var countBinarySubstrings = function (s) { }
 */
+
+const countBinarySubstrings = s => {
+  if (s.length <= 1) return 0;
+  let previousLength = 0;
+  let currentLength = 1;
+  let count = 0;
+
+  for (let i = 1; i < s.length; i++) {
+    let previous = s[i - 1];
+    let current = s[i];
+    if (current === previous) {
+      currentLength++;
+    } else {
+      previousLength = currentLength;
+      currentLength = 1;
+    }
+
+    if (previousLength >= currentLength) {
+      count++;
+    }
+  }
+  return count;
+};
+
+console.log(countBinarySubstrings('00110011'));
