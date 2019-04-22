@@ -48,9 +48,10 @@ const minAddToMakeValid = S => {
   let arr = [];
 
   for (char of S) {
-    if (char === ')' && arr[arr.length - 1 === '(']) arr.pop();
+    if (char === ')' && arr[arr.length - 1] === '(') arr.pop();
     else arr.push(char);
   }
+
   return arr.length;
 };
 

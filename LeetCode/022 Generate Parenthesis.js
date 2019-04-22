@@ -24,4 +24,4 @@ const generateParenthesis = n => {
   }
 };
 
-console.log(generateParenthesis(2));
+console.log(generateParenthesis(4));

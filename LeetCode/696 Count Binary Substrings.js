@@ -33,7 +33,6 @@ const countBinarySubstrings = s => {
       previousLength = currentLength;
       currentLength = 1;
     }
-
     if (previousLength >= currentLength) {
       count++;
     }
@@ -42,3 +41,23 @@ const countBinarySubstrings = s => {
 };
 
 console.log(countBinarySubstrings('00110011'));
+
+var countBinarySubstrings = function(s) {
+  let begin = s[0];
+  let counter = 1;
+  let result = 0;
+  let before = 0;
+  let after = 0;
+
+  for (let i = 1; i <= s.length; i++) {
+    if (s[i] === begin) counter++;
+    else if (s[i] !== begin) {
+      begin = s[i];
+      after = counter;
+      if (before !== 0) result = result + Math.min(after, before);
+      before = after;
+      counter = 1;
+    }
+  }
+  return result;
+};
