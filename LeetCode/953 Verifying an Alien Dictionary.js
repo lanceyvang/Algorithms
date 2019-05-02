@@ -1,5 +1,5 @@
 /*
-
+// 953. Verifying an Alien Dictionary
 In an alien language, surprisingly they also use english lowercase letters,
 but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
 
@@ -28,14 +28,13 @@ blank character which is less than any other character (More info).
 
 */
 function isAlienSorted(words, order) {
-  for (let i = 0; i < words.length - 2; i++) {
+  for (let i = 0; i < words.length - 1; i++) {
     let currentWord = words[i];
     let nextWord = words[i + 1];
 
-    helper(currentWord, nextWord);
+    if (!helper(currentWord, nextWord)) return false;
   }
-
-  // 953. Verifying an Alien Dictionary
+  return true;
 
   function helper(current, next) {
     let length = Math.min(current.length, next.length);

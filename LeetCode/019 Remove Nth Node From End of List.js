@@ -23,6 +23,7 @@ class ListNode {
 let list = new ListNode(1);
 list.next = new ListNode(2);
 list.next.next = new ListNode(3);
+list.next.next.next = new ListNode(4);
 
 const removeNthFromEnd = (head, n) => {
   const preHead = { next: head };
@@ -30,7 +31,11 @@ const removeNthFromEnd = (head, n) => {
   let left = preHead;
   let right = head;
 
-  while (n--) right = right.next;
+  // while (n--) right = right.next;
+
+  for (let i = 0; i < n; i++) {
+    right = right.next;
+  }
 
   while (right) {
     left = left.next;
@@ -41,4 +46,4 @@ const removeNthFromEnd = (head, n) => {
   return preHead.next;
 };
 
-console.log(removeNthFromEnd(list, 1));
+console.log(removeNthFromEnd(list, 2));
