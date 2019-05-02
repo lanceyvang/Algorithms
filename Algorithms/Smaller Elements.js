@@ -19,7 +19,6 @@ const smallerElement = arr => {
   for (let i = 0; i < arr.length; i++) {
     let counter = 0;
     for (let j = i + 1; j < arr.length; j++) {
-      console.log(arr[j]);
       if (arr[i] > arr[j]) counter++;
     }
     results.push(counter);
