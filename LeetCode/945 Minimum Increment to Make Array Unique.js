@@ -24,36 +24,52 @@ Explanation:  After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
 It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
 */
 
-function minIncrementForUnique(A) {
-  let set = new Set();
+// function minIncrementForUnique(A) {
+//   let set = new Set();
+//   let counter = 0;
+
+//   for (let num of A) {
+//     if (!set.has(num)) set.add(num);
+//     else {
+//       let int = num;
+//       while (set.has(int)) {
+//         counter++;
+//         int += 1;
+//       }
+//       set.add(int);
+//     }
+//   }
+//   return counter;
+// }
+
+const minIncrementForUnique = arr => {
+  arr.sort();
   let counter = 0;
 
-  for (let num of A) {
-    if (!set.has(num)) set.add(num);
-    else {
-      let int = num;
-      while (set.has(int)) {
-        counter++;
-        int += 1;
-      }
-      set.add(int);
-    }
-  }
-  return counter;
-}
+  for (let i = 0; i < arr.length; i++) {
+    let current = arr[i];
+    let next = arr[i + 1];
 
-var minIncrementForUnique = function(A) {
-  let counter = 0;
-  A.sort((a, b) => a - b);
-  for (let i = 0; i < A.length; i++) {
-    if (A[i] === A[i + 1]) {
-      A[i + 1] = A[i] + 1;
-      counter += 1;
-    } else if (A[i] > A[i + 1]) {
-      counter += A[i] - A[i + 1] + 1;
-      A[i + 1] = A[i] + 1;
+    if (current >= next) {
+      current === next ? (counter += 1) : (counter += current - next + 1);
+      arr[i + 1] = current + 1;
     } else continue;
   }
   return counter;
 };
+
+// var minIncrementForUnique = function(A) {
+//   let counter = 0;
+//   A.sort((a, b) => a - b);
+//   for (let i = 0; i < A.length; i++) {
+//     if (A[i] === A[i + 1]) {
+//       A[i + 1] = A[i] + 1;
+//       counter += 1;
+//     } else if (A[i] > A[i + 1]) {
+//       counter += A[i] - A[i + 1] + 1;
+//       A[i + 1] = A[i] + 1;
+//     } else continue;
+//   }
+//   return counter;
+// };
 console.log(minIncrementForUnique([3, 2, 1, 2, 1, 7]));
