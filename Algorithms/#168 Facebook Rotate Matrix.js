@@ -24,7 +24,8 @@ const rotate = matrix => {
 
   for (let i = matrix.length - 1; i >= 0; i--) {
     for (let j = 0; j < matrix.length; j++) {
-      matrix[j][i] = counter++;
+      matrix[j][i] = counter;
+      counter++;
     }
   }
   return matrix;

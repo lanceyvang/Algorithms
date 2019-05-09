@@ -12,7 +12,6 @@ Given start = "dog", end = "cat", and dictionary = {"dot", "tod", "dat", "dar"},
 
 const transform = (start, end, dictionary) => {
   let results = [start];
-
   let hash = {};
 
   for (let letter of end) {
