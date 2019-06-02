@@ -33,7 +33,7 @@ const flatten = (obj, result = {}, prepend = '') => {
     // if not then just add the value to our result object;
     if (typeof value === 'object') {
       // checks to see what we should input as prepend during recursion;
-      // first recursion just adds the word to prepend but following recursions need a '.' before the word;
+      // following recursions need a '.' before the word;
       const str = prepend.length === 0 ? word : `.${word}`;
       flatten(value, result, (prepend += str));
     } else {
