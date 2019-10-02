@@ -23,4 +23,18 @@ def two_sum(nums: list, target: int) -> list:
 
     return []
 
-print(two_sum([5,75,25], 100))
+print(two_sum([2, 7, 11, 15], 9))
+
+'''
+ if len(nums) <= 1:
+        return False
+        
+    dict1 = {}
+        #sampledict = {7:0, 2:1,-2:2,-6:3}
+    for i in range(len(nums)):
+
+        if nums[i] in dict1:
+            return dict1[nums[i]] ,i
+        else:
+            dict1[target-nums[i]] = i
+'''
