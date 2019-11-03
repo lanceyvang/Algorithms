@@ -16,22 +16,27 @@ def animal_crackers(text):
 
 # MAKES TWENTY: Given two integers, return True if the sum of the integers is 20 or if one of the integers is 20. If not, return False
 def makes_twenty(n1,n2):
-    if n1 + n2 == 20 or n1 == 20 or n2 == 20: return True
-    return False
+    return n1 + n2 == 20 or n1 == 20 or n2 == 20
 
 # print(makes_twenty(20,10))
 # print(makes_twenty(2,3))
 
 # OLD MACDONALD: Write a function that capitalizes the first and fourth letters of a name
+# def old_macdonald(name):
+#     return name[0].upper() + name[1:3] + name[3].upper() + name[4:] 
+
 def old_macdonald(name):
-    return name[0].upper() + name[1:3] + name[3].upper() + name[4:] 
+    if len(name) > 3:
+        return name[:3].capitalize() + name[3:].capitalize()
+    else:
+        return 'Name is too short!'
 
 # print(old_macdonald('macdonald'))
 
 
 # MASTER YODA: Given a sentence, return a sentence with the words reversed
 def master_yoda(text):
-    return ' '.join(reversed(text.split(' ')))
+    return ' '.join(text.split(' ')[::-1])
 
 # print(master_yoda('I am home'))
 
@@ -101,7 +106,7 @@ def spy_game(nums):
         if num == 0 or num == 7: count += 1
         if count == 3: return True
 
-    return 'Pokemon'
+    return False
 
 # print(spy_game([1,2,4,0,0,7,5]))
 # print(spy_game([1,0,2,4,0,5,7]))
