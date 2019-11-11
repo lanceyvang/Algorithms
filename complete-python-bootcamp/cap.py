@@ -4,4 +4,4 @@ def cap_test(text):
     Output the capitalized string
     '''
     return text.title()
-
+    
