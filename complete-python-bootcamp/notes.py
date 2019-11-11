@@ -186,24 +186,24 @@ class Animal():
 # my_dog.who_am_i()
 
 # Polymorphism
-class Dog():
+# class Dog():
 
-    def __init__(self, name):
-        self.name = name
+#     def __init__(self, name):
+#         self.name = name
     
-    def speak(self):
-        return self.name + ' says woof!'
+#     def speak(self):
+#         return self.name + ' says woof!'
 
-class Cat():
+# class Cat():
 
-    def __init__(self, name):
-        self.name = name
+#     def __init__(self, name):
+#         self.name = name
     
-    def speak(self): 
-        return self.name + ' says meow!'
+#     def speak(self): 
+#         return self.name + ' says meow!'
     
-niko = Dog('niko')
-felix = Cat('felix')
+# niko = Dog('niko')
+# felix = Cat('felix')
 
 # for pet in [niko,felix]:
 #     print(pet.speak())
@@ -214,31 +214,31 @@ def pet_speak(pet):
 # pet_speak(niko)
 
 # Abstract Class, never expects to be instantiated!!! What I need to rewrite my script with!
-class Animal():
+# class Animal():
     
-    def __init__(self,name):
-        self.name = name
+#     def __init__(self,name):
+#         self.name = name
     
-    def speak(self):
-        raise NotImplementedError('Subclass must implement this abstract method')
+#     def speak(self):
+#         raise NotImplementedError('Subclass must implement this abstract method')
 
-    def eat(self):
-        return 'I am eating!'
+#     def eat(self):
+#         return 'I am eating!'
 
-class Dog(Animal):
+# class Dog(Animal):
     
-    def speak(self):
-        return self.name+ ' says woof!'
+#     def speak(self):
+#         return self.name+ ' says woof!'
 
-class Cat(Animal):
+# class Cat(Animal):
     
-    def speak(self):
-        return self.name+ ' says meow!'
+#     def speak(self):
+#         return self.name+ ' says meow!'
 
-fido = Dog('Fido')
-isis = Cat('Isis')
+# fido = Dog('Fido')
+# isis = Cat('Isis')
 
-myanimal = Animal('Bird')
+# myanimal = Animal('Bird')
 # print(myanimal.eat())
 
 # Special Methods and Magic Methods
@@ -307,7 +307,7 @@ def ask_for_int():
             print('Whoops! That is not a number')
             continue
         else:
-            print('Yes thank you')
+            print(f'Yes thank you, your number is {result}')
             break
         # finally:
         #     print('Im going to ask you again')
@@ -331,3 +331,4 @@ def ask_for_int():
 #     print('There is an error!')
 # finally:
 #     print('All Done.')
+
