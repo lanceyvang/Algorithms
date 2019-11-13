@@ -1,12 +1,24 @@
 '''
-A Very Simple Script
+Creating Pokemons!
 '''
 
-def myfunc():
+class Pokemon():
     '''
-    A simple function
+    Abstract class, only serves as base class
+    Creates the Pokemon base class
     '''
-    first = 1
-    second = 2
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return f'{self.name} {self.name}'
 
-    return first + second
+class Pikachu(Pokemon):
+
+    def attack(self):
+        return 'Thunderbolt'
+
+p = Pikachu('Pika')
+
+print(p.speak())
+print(p.attack())
