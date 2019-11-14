@@ -36,5 +36,91 @@ class Deck():
     def deal(self):
         return self.deck.pop()
 
+class Hand:
+    def __init__(self):
+        self.cards = []
+        self.value = 0
+        self.aces = 0
+
+    def add_card(self, card):
+        self.cards.append(card)
+        self.value += values[card.rank]
+
+        # track aces
+        if card.rank == 'Ace':
+            self.aces += 1
+
+    def adjust_for_ace(self):
+        while self.value > 21 and self.aces > 0:
+            self.value -= 10
+            self.aces -= 1
+
+class Chips:
+
+    def __init__(self, total=100):
+        self.total = total
+        self.bet = 0
+    
+    def win_bet(self):
+        self.total += self.bet
+
+    def lose_bet(self):
+        self.total -= self.bet
+
+def take_bet(chips):
+
+    while True:
+
+        try:
+            chips.bet = int(input('How many chips would you like to bet?'))
+        except:
+            print('Sorry please provide an integer')
+        else:
+            if chips.bet > chips.total:
+                print(f'Sorry, you do not have enough chips! You have: {chips.total}')
+            else:
+                break
+
+def hit(deck,hand):
+    '''
+    Write a function for taking hits
+    '''
+    single_card = deck.deal()
+    hand.add_card(single_card)
+    hand.adjust_for_ace()
+
+def hit_or_stand(deck, hand):
+    '''
+    Write a function prompting the Player to Hit or Stand
+    '''
+    global playing
+
+    while True:
+        x = input('Hit or Stand? Enter h or s ')
+
+        if x[0].lower() == 'h':
+            hit(deck, hand)
+
+        elif x[0].lower() == 's':
+            print("Player Stands Dealer's Turn")
+            playing = False
+
+        else:
+            print('Sorry, I did not understand that, Please enter h or s only!')
+            continue
+        
+        break
+
+
 test_deck = Deck()
-print(test_deck)
+test_deck.shuffle()
+
+# player
+test_player = Hand()
+# deal 1 card from the deck
+pulled_card = test_deck.deal()
+print(pulled_card)
+test_player.add_card(pulled_card)
+print(test_player.value)
+test_player.add_card(test_deck.deal())
+print(test_player.value)
