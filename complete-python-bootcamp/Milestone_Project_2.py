@@ -111,16 +111,58 @@ def hit_or_stand(deck, hand):
         
         break
 
+# Write functions to display cards
+def show_some(player, dealer):
+    print('Dealers Hand:')
+    print('one card hidden!')
+    print(dealer.cards[1])
+    print('\n')
+    print('PLAYERS HAND:')
+    for card in player.cards:
+        print(card)
 
-test_deck = Deck()
-test_deck.shuffle()
 
-# player
-test_player = Hand()
-# deal 1 card from the deck
-pulled_card = test_deck.deal()
-print(pulled_card)
-test_player.add_card(pulled_card)
-print(test_player.value)
-test_player.add_card(test_deck.deal())
-print(test_player.value)
+def player_busts(player, dealer, chips):
+    print('Bust Player!')
+    chips.lose_bet()
+
+def player_wins(player, dealer, chips):
+    print('Player Wins!')
+    chips.win_bet()
+
+def dealer_busts(player, dealer, chips):
+    print('Dealer Wins!')
+    chips.win_bet()
+
+def deal_wins(player, dealer, chips):
+    print('Dealer Wins!')
+    chips.win_bet()
+
+def push(player, dealer, chips):
+    print('Dealer and player tie! PUSH')
+
+# GAME
+while True:
+
+    # Print and opening statement.
+    print('Welcome to BlackJack')
+    # Create & shuffle the deak, deal two cards to each player.
+    deck = Deck()
+    deck.shuffle()
+
+    player_hand = Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+
+    dealer_hand = Hand()
+    dealer_hand.add_card(deck.deal())
+    dealer_hand.add_card(deck.deal())
+
+    # Set up the Player's chips
+
+    # Prompt the Player for their bet
+
+    # Show cards (but keep one dealer card hidden)
+
+    while playing:
+        pass
