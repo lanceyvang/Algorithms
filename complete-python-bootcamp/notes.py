@@ -332,3 +332,115 @@ def ask_for_int():
 # finally:
 #     print('All Done.')
 
+### 81. Decorators with Python Overview
+'''
+Python has decorators that allow ou to tack on extra functionality to an already existing function.
+They use the @ operator and are then placed on the top of the original function.
+
+@some_decorator
+def simple_func():
+    # Do simple stuff
+    return something
+'''
+def new_decorator(original_func):
+    def wrap_func():
+        print('Some extra code, before he original function')
+        original_func()
+        print('Some extra code, after the original function!')
+
+    return wrap_func
+
+
+
+@new_decorator # Our on or off switch, common in Jango and Flask; 
+def func_needs_decorator():
+    print('I want to be decorated!!')
+
+# same functionality as @
+# decorated_func = new_decorator(func_needs_decorator)
+# decorated_func()
+
+# func_needs_decorator()
+
+### 83. Generators with Python # generate values as you need them
+# def create_cubes(n):
+#     result = []
+#     for x in range(10):
+#         result.append(x**3)
+#     return result
+
+# print(create_cubes(10))
+
+def create_cubes(n):
+    for x in range(10):
+        yield x**3 # a lot more memory efficient
+
+# for x in create_cubes(10):
+#     print(x)
+
+# print(list(create_cubes(10))) if you want the list
+
+# def gen_fibon(n):
+#     a = 1
+#     b = 1
+
+#     for i in range(n):
+#         yield a
+#         a,b = b, a+b
+
+# for number in gen_fibon(10):
+#     print(number)
+
+# def gen_fibon(n):
+#     a = 1
+#     b = 1
+#     output = []
+
+#     for i in range(n):
+#         output.append(a)
+#         a,b = b, a+b
+#     return output
+
+# print(gen_fibon(11))
+
+def simple_gen():
+    for x in range(3):
+        yield x
+
+# for num in simple_gen():
+#     print(num)
+
+g = simple_gen()
+
+# print(next(g))
+# print(next(g))
+
+def gensquares(N):
+    for x in range(N):
+        yield x**2
+
+# for x in gensquares(10):
+#     print(x)
+
+import random
+
+def rand_num(low, high, n):
+    for x in range(n):
+        yield random.randint(low, high)
+
+# for num in rand_num(1, 10, 10):
+#     print(num)
+
+s = 'hello'
+
+s_iter = iter(s)
+
+# print(next(s_iter))
+# print(next(s_iter))
+
+my_list = [1,2,3,4,5]
+
+# like list comprehension but gencomp generates it as you need it.
+gencomp = (item for item in my_list if item > 3)
+
+# print(list(gencomp))
