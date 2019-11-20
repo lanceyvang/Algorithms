@@ -195,7 +195,7 @@ while True:
         # If player's hand exced 21, run player_bust() and break out of loop
         if player_hand.value > 21:
             player_busts(player_hand, dealer_hand, players_chips)
-            continue
+            # continue
 
         # If player hasn't busted, play dealer's hand until dealer reaches 17
         if player_hand.value <= 21:
@@ -224,10 +224,8 @@ while True:
         # Ask to play again
         new_game = input('Would you like to player another hand? y/n: ')
 
-        if new_game[0].lower() == 'y':
-            playing = True
-            continue
-        else:
+        if new_game[0].lower() == 'n':
             print('Thank you for playing!')
             playing = False
+
     break
