@@ -424,9 +424,9 @@ def gensquares(N):
 
 import random
 
-def rand_num(low, high, n):
-    for x in range(n):
-        yield random.randint(low, high)
+# def rand_num(low, high, n):
+#     for x in range(n):
+#         yield random.randint(low, high)
 
 # for num in rand_num(1, 10, 10):
 #     print(num)
@@ -444,3 +444,140 @@ my_list = [1,2,3,4,5]
 gencomp = (item for item in my_list if item > 3)
 
 # print(list(gencomp))
+
+### 87. Collections Module - counter
+from collections import Counter
+
+l = [1,2,3,4,1,2,3,2]
+
+# print(Counter(l))
+
+s = 'How many ties does each word show up in this sentence word word up'
+c = Counter(s.split(' '))
+# print(c.most_common(2))
+# sum(c.values())
+# list(c)
+# set(c)
+# dict(c)
+# c.items()
+# Counter(dict(list_of_pairs))
+# c += Counter() # remove zero and negative counts
+# print(c.most_common()[:-2-1:-1]) # n least common elements
+
+from collections import defaultdict
+
+# d = {'k1':1}
+# print(d['k2']) # will cause error
+# print(d['k1'])
+
+d = defaultdict(object)
+
+d['one']
+
+# for item in d: 
+#     print(item)
+
+d = defaultdict(lambda: 0)
+# print(d['one'])
+
+d['two'] = 2
+
+# print(d['two'])
+
+### 89.OrderedDict
+# from collections import OrderedDict
+
+# d = OrderedDict()
+
+### 90. Collections Modeule Named Tuple
+from collections import namedtuple
+
+Dog = namedtuple('Dog', 'age breed name')
+
+sam = Dog(age=2,breed='Lab',name='Sammy')
+
+# print(sam.age)
+
+### 91. Datetime
+import datetime
+
+t = datetime.time(5,25,1)
+# print(t)
+# print(t.hour)
+
+today = datetime.date.today()
+# print(today)
+# print(today.month)
+
+d1 = datetime.date(2015,3,11)
+# print(d1)
+
+d2 = d1.replace(year=1990)
+# print(d2)
+
+# print(d1-d2) # gives us time delta
+
+### 92. Python Debugger pdb
+import pdb
+
+x = [1,3,4]
+y = 2
+z = 3
+
+result = y + z 
+# print(result)
+
+# pdb.set_trace()
+
+# result2 = y + x
+# print(result2)
+
+## 93. Timing your code
+'''
+How to tell if doing things one way or the other is faster.
+'''
+
+import timeit
+
+
+# # generator comprehension
+# print(timeit.timeit("'-'.join(str(n) for n in range(100))", number=999)) 
+
+# # list comprehension
+# print(timeit.timeit("'-'.join([str(n) for n in range(100)])", number=999)) 
+
+# # map
+# print(timeit.timeit("'-'.join(map(str, range(100)))", number=999)) 
+
+'''
+Print out 
+0.012254517998371739
+0.010661407999577932
+0.008556519998819567
+'''
+
+x = '-'.join(map(str, range(100)))
+
+# print(x, type(x))
+
+### 94. Regular Expressions -re
+import re
+
+patterns = ['term1', 'term2']
+text = 'this is  string with term1, but not the other term'
+
+match = re.search(patterns[0], text)
+match_idx = match.start()
+# print(match)
+
+split_term = '@'
+phrase = 'What is your email, is it hello@gmail.com?'
+re.split(split_term, phrase)
+
+length = len(re.findall('match', 'Here is one match, here is another match'))
+
+test_phrase = 'This is a string. But it has puctuation.'
+no_punctuation = re.findall('[^!.?]+', test_phrase)
+# print(no_punctuation)
+
+### 95. StringIO
