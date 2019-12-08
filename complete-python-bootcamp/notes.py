@@ -581,3 +581,7 @@ no_punctuation = re.findall('[^!.?]+', test_phrase)
 # print(no_punctuation)
 
 ### 95. StringIO
+# import StringIO
+# convert string to files
+
+
