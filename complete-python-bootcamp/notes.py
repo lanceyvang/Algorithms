@@ -584,4 +584,61 @@ no_punctuation = re.findall('[^!.?]+', test_phrase)
 # import StringIO
 # convert string to files
 
+### 97. Advanced Numbers
+# hexadecimals
+hex(246)
+bin(128)
+pow(2,4,3)
+abs(-3)
+round(3.1)
+round(3.141592,2)
 
+### 98. Advanced Strings
+s = 'hello world'
+s.capitalize()
+s.upper()
+s.lower()
+s.count('o')
+s.find('o')
+s.center(20,'z')
+'hello\tthi'.expandtabs()
+s.isalnum()
+s.isalpha()
+s.islower()
+s.isspace()
+s.istitle()
+s.isupper()
+s.endswith('o')
+s.split('e')
+s.partition('i') # similar to split but only does it at the first instance
+
+### 99. Advance Sets
+s = set()
+s.add(1)
+s.add(2)
+s.clear()
+s = {1,2,3}
+sc = s.copy()
+s.difference(sc) # finds the difference between two sets
+s.intersection(sc) # finds the common of two sets
+s.intersection_update(sc) # updates a set with the intersection of two sets
+
+s1 = {1,2,3}
+s2 = {1,4,5}
+s1.difference_update(s2) # removes numbers found in s2 from s1
+# print(s1)
+
+s.discard(1)
+
+s1 = {1,2}
+s2 = {1,2,4}
+s3 = {5}
+
+s1.isdisjoint(s3) # True, because they don't have an intersection
+s1.issubset(s2)
+s2.issuperset(s1)
+
+s1.symmetric_difference(s2) # {4}
+
+s1.union(s2) # {1,2,4}
+s1.update(s2) # {1,2,4}
