@@ -666,3 +666,32 @@ l.insert(2,'inserted')
 l.remove('inserted') # remove first instance
 l.reverse() # works in place (side-effect)
 l.sort()
+
+### 163. Map
+def fahrenheit(T):
+    return (9.0/5)*T + 32
+
+temp = [0,22.5,40,100]
+# m = map(fahrenheit, temp)
+m = map(lambda T: (9/5)*T + 32, temp)
+# print(list(m))
+
+a = [1,2,3]
+b = [4,5,6]
+c = [7,8,9]
+
+m2 = map(lambda x,y,z: x+y+z, a,b,c)
+# print(list(m2))
+a_neg = map(lambda num: num*-1, a)
+# print(list(a_neg))
+
+### 164. Reduce
+from functools import reduce
+num_list = [47,11,42,13]
+reduced_list = reduce(lambda x,y: x+y, num_list)
+# print(reduced_list)
+max_find = reduce(lambda a,b,: a if a > b else b, a)
+# print(max_find)
+
+f = filter(lambda x: True if x%2 == 0 else False, a)
+print(list(f),a)
