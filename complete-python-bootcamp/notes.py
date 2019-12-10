@@ -693,5 +693,27 @@ reduced_list = reduce(lambda x,y: x+y, num_list)
 max_find = reduce(lambda a,b,: a if a > b else b, a)
 # print(max_find)
 
+### 166. Filter
 f = filter(lambda x: True if x%2 == 0 else False, a)
-print(list(f),a)
+# print(list(f),a)
+
+### 166. Zip
+x = [1,2,3]
+y = [4,5,6]
+z = zip(x,y)
+# print(list(z))
+# for pair in zip(a,b):
+#     print(max(pair))
+
+m = map(lambda pair: max(pair), zip(a,b,))
+# print(list(m))
+
+### 167. Enumerate
+l = ['a','b','c']
+for count,item in enumerate(l):
+    print(count,item)
+
+### 168. all() and any()
+l = [True, False, False]
+any(l)
+all(l)
