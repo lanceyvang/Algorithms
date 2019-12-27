@@ -1,9 +1,8 @@
-# print('hello world')
 '''
 Given two strings, check to see if they are anagrams.
 Ignore spaces and capitalization.
 '''
-from collections import Counter
+# from collections import Counter
 
 def anagram(s1,s2):
     '''
@@ -68,27 +67,6 @@ def anagram(s1,s2):
 # b = 'old west action'
 
 # print(anagram(a,b))
-import unittest
-
-# class TestAnagram(unittest.TestCase):
-
-#     def test_case1(self):
-#         a = 'god'
-#         b = 'dog'
-#         result = anagram(a, b)
-#         self.assertEqual(result, True)
-    
-#     def test_case2(self):
-#         a = 'clint eastwood'
-#         b = 'old west action'
-#         self.assertEqual(anagram(a,b), True)
-
-# unittest.main()
-
-class TestArrayPairSum(unittest.TestCase):
-
-    def test_case1(self):
-        self.assertEqual(pair_sum([1,3,2,2],4), [(1,3),(2,2)])
 
 '''
 Given an integer array, output all unique pairs that sum up to a specific value K.
@@ -131,7 +109,6 @@ def pair_sum(nums,target):
     # print('\n'.join(map(str,list(result))))
 
 # print(pair_sum([1,3,2,2,2],4))
-# unittest.main()
 
 '''
 Find which element is missing in the second array.
