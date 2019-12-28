@@ -13,5 +13,18 @@ class Test(unittest.TestCase):
         print(f'Expected 29, got {result}')
         self.assertEqual(result,29)
 
+    def test_rev_words(self):
+        result = notes.rev_words('   space before')
+        self.assertEqual(result,'before space')
+    
+    def test_compress(self):
+        result = notes.compress('AAAABBBBCCCCCDDEEEE')
+        self.assertEqual(result,'A4B4C5D2E4')
+
+        result = notes.compress('AAB')
+        self.assertEqual(result,'A2B1')
+
 if __name__ == '__main__':
     unittest.main()
+
+
