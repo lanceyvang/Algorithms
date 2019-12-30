@@ -235,25 +235,25 @@ def uni_char(s):
 
 ### 67. Implementation of Stack
 
-class Stack(object):
+# class Stack(object):
 
-    def __init__(self):
-        self.items = []
+#     def __init__(self):
+#         self.items = []
 
-    def isEmpty(self):
-        return self.items == []
+#     def isEmpty(self):
+#         return self.items == []
     
-    def push(self,item):
-        self.items.append(item)
+#     def push(self,item):
+#         self.items.append(item)
     
-    def pop(self):
-        return self.items.pop()
+#     def pop(self):
+#         return self.items.pop()
 
-    def peek(self):
-        return self.items[len(self.items)-1]
+#     def peek(self):
+#         return self.items[len(self.items)-1]
     
-    def size(self):
-        return len(self.items)
+#     def size(self):
+#         return len(self.items)
     
 # s = Stack()
 # print(s.isEmpty())
@@ -323,6 +323,45 @@ Check to see if opening and closing parentheses are balanced.
 '([])' => True
 '([)]' => False
 '''
+# def balance_check(s):
+
+#     if len(s) % 2 != 0:
+#         return False
+
+#     stack = []
+#     opening = set('([{')
+#     matches = set([('[',']'),('(',')'),('{','}')])
+
+#     for char in s:
+#         if char in opening:
+#             stack.append(char)
+#         else:
+#             if len(stack) == 0:
+#                 return False
+
+#             if (stack.pop(), char) not in matches:
+#                 return False
+
+#     return len(stack) == 0
+
+# def balance_check(s):
+#     if len(s) % 2 != 0:
+#         return False
+    
+#     stack = []
+#     opening = set('{[(')
+#     matches = set([('(',')'),('[',']'),('{','}')])
+#     # print(matches)
+
+#     for char in s:
+#         if char in opening:
+#             stack.append(char)
+#         else:
+#             if (stack[-1],char) in matches:
+#                 stack.pop()
+
+#     return len(stack) == 0
+
 def balance_check(s):
     bank = []
 
@@ -341,5 +380,81 @@ def balance_check(s):
 
     return len(bank) == 0 
 
-print(balance_check('([])'))
-print(balance_check('([)]'))
+# print(balance_check('([])'))
+# print(balance_check('([)]'))
+
+### 798. Implement a Queue Class using 2 Stacks
+
+class Stack(object):
+    
+    def __init__(self):
+        self.items = []
+    
+    def checkEmpty(self):
+        return self.items == []
+
+    def addItem(self,item):
+        self.items.append(item)
+    
+    def removeItem(self):
+        return self.items.pop()
+
+    def peek(self):
+        if self.checkEmpty():
+            return 'Nothing in stack.'
+        else:
+            return self.items[-1]
+
+    def size(self):
+        return len(self.items)
+
+# s = Stack()
+# s.addItem('apple')
+# s.addItem('bananas')
+# print(s.peek())
+
+# basically can only use push(append) and pop.
+class Queue2Stacks(object):
+
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+    
+    def enqueue(self,element):
+        self.stack1.append(element)
+
+    def dequeue(self):
+        # if stack 2 is empty, then fill it.
+        if self.stack2 == []: # if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop()
+
+'''
+Can only use push (append) and pop.
+'''
+class Stack2Queue(object):
+
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def enqueue(self,element):
+        self.stack1.append(element)
+
+    def dequeue(self):
+        self.reverse(self.stack1,self.stack2)
+        result = self.stack2.pop()
+        self.reverse(self.stack2,self.stack1)
+        return result
+    
+    def reverse(self,stackA,stackB):
+        while stackA:
+            stackB.append(stackA.pop())
+
+# q = Stack2Queue()
+# q.enqueue(1)
+# q.enqueue(2)
+# q.enqueue(3)
+# print(q.dequeue())
+# print(q.stack1)

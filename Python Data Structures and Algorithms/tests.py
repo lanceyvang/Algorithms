@@ -21,9 +21,6 @@ class Test(unittest.TestCase):
         result = notes.compress('AAAABBBBCCCCCDDEEEE')
         self.assertEqual(result,'A4B4C5D2E4')
 
-        result = notes.compress('AAB')
-        self.assertEqual(result,'A2B1')
-
 if __name__ == '__main__':
     unittest.main()
 
