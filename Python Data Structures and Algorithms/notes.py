@@ -458,3 +458,175 @@ class Stack2Queue(object):
 # q.enqueue(3)
 # print(q.dequeue())
 # print(q.stack1)
+
+# class DoubleStack(object):
+    
+#     def __init__(self):
+#         self.s1 = []
+#         self.s2 = []
+
+#     def enqueue(self,element):
+#         self.s1.append(element)
+
+#     def dequeue(self):
+        
+#         while len(self.s1):
+#             self.s2.append(self.s1.pop())
+
+#         result = self.s2.pop()
+
+#         while len(self.s2):
+#             self.s1.append(self.s2.pop())
+        
+#         return result
+
+# q = DoubleStack()
+
+# q.enqueue(1)
+# q.enqueue(2)
+# q.enqueue(3)
+# q.dequeue()
+
+
+## 82. Singly Linked Lists
+# class Node(object):
+    
+#     def __init__(self,value):
+#         self.value = value
+#         self.nextnode = None
+
+# a = Node(1)
+# b = Node(2)
+# c = Node(3)
+
+# a.nextnode = b
+# b.nextnode = c
+# print(a.nextnode.value)
+
+## 84. Doubly Linked List
+# class DoublyLinkedListNode(object):
+
+#     def __init__(self,value):
+        
+#         self.value = value
+#         self.next_node = None
+#         self.prev_node = None
+
+# a = DoublyLinkedListNode(1)
+# b = DoublyLinkedListNode(2)
+# c = DoublyLinkedListNode(3)
+
+# a.next_node = b
+# b.prev_node = a
+
+# b.next_node = c
+# c.prev_node = b
+
+## 85. Singy Linked List Cycle Check
+'''
+Given a singly linked list, write a function which takes in the first node in a singly linked list and returns a boolean indicating if the linked list contains a cycle.
+'''
+
+# class Node(object):
+
+#     def __init__(self,value):
+#         self.value = value
+#         self.nextnode = None
+
+
+# def cycle_check(linked_list):
+#     seen = []
+
+#     while linked_list.nextnode != None:
+#         if linked_list in seen:
+#             return True
+#         seen.append(linked_list)
+#         linked_list = linked_list.nextnode
+    
+#     return False
+
+# def cycle_check(linked_list):
+
+#     marker1 = linked_list
+#     marker2 = linked_list.nextnode
+
+#     while marker2 != None and marker2.nextnode != None:
+
+#         marker1 = marker1.nextnode
+#         marker2 = marker2.nextnode.nextnode
+
+#         if marker2 == marker1:
+#             return True
+    
+#     return False
+
+# a = Node(1)
+# b = Node(2)
+# c = Node(3)
+# d = Node(4)
+
+# a.nextnode = b
+# b.nextnode = c
+# c.nextnode = d
+
+# print(cycle_check(a))
+
+## 87. Linked List Reversal
+'''
+Write a function to reverse a Linked List in place. The function will take in the head of the list as a input and return the new head of the list.
+'''
+# class Node(object):
+
+#     def __init__(self,value):
+
+#         self.value = value 
+#         self.nextnode = None
+
+# def reverse(head):
+
+#     current = head
+#     previous = None
+#     nextnode = None
+
+#     while current:
+        
+#         nextnode = current.nextnode
+#         current.nextnode = previous
+
+#         previous = current
+#         current = nextnode
+
+#     return previous
+
+class Node(object):
+
+    def __init__(self,value):
+        self.value = value
+        self.nextnode = None
+    
+def reverse(head):
+    current = head
+    nextnode = previous = None
+    # previous = None
+
+    while current:
+        nextnode,current.nextnode = current.nextnode,previous
+        previous,current = current,nextnode
+    
+    return previous
+
+a = Node(1)
+b = Node(2)
+c = Node(3)
+
+a.nextnode = b
+b.nextnode = c
+
+def print_node(head):
+    while head:
+        print(head.value)
+        head = head.nextnode
+
+x = reverse(a)
+
+print_node(x)
