@@ -332,6 +332,28 @@ def ask_for_int():
 # finally:
 #     print('All Done.')
 
+### 75. Running tests with Unitest Library
+# def cap_text(text):
+#     return text.capitalize()
+
+import unittest
+import cap
+
+class TestCap(unittest.TestCase):
+
+    def test_one_word(self):
+        text = 'python'
+        result = cap.cap_test(text)
+        self.assertEqual(result, 'Python')
+    
+    def test_multiple_words(self):
+        text = 'monty python'
+        result = cap.cap_test(text)
+        self.assertEqual(result, 'Monty Python')
+
+if __name__ == '__main__':
+    unittest.main()
+
 ### 81. Decorators with Python Overview
 '''
 Python has decorators that allow ou to tack on extra functionality to an already existing function.
