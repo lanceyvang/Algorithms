@@ -1,29 +1,48 @@
 class Node {
-    constructor(value){
-        this.value = value;
-        this.next = null;
-    }
+	constructor(value) {
+		this.value = value;
+		this.nextnode = null;
+	}
 }
 
-let reverse = (head) => {
-    let current = head;
-    let nextnode = null;
-    let previous = null;
+const reverse = head => {
+	let current = head;
+	let nextnode,
+		previous = null;
 
-    while (current) {
-        [nextnode,current.next] = [current.next,previous];
-        [previous,current] = [current,nextnode];
-    }
-    return previous;
+	while (current) {
+		[nextnode, current.next] = [current.next, previous];
+		[previous, current] = [current, nextnode];
+	}
+	return previous;
 };
 
-let a = new Node(1)
-let b = new Node(2)
-let c = new Node(3)
+const a = new Node(1);
+const b = new Node(2);
+const c = new Node(3);
+const d = new Node(4);
 
-a.next = b
-b.next = c
+a.nextnode = b;
+b.nextnode = c;
+c.nextnode = d;
 
-console.log(a)
-const x = reverse(a)
-console.log(x)
+// console.log(a);
+// const x = reverse(a);
+// console.log(x);
+
+const nth = (head, n) => {
+	let left = head;
+	let right = head;
+
+	while (n--) {
+		right = right.nextnode;
+	}
+
+	while (right.nextnode) {
+		right = right.nextnode;
+		left = left.nextnode;
+	}
+	return left;
+};
+
+nth(a, 1);
