@@ -4,6 +4,8 @@ Ignore spaces and capitalization.
 '''
 # from collections import Counter
 
+import itertools
+
 
 def anagram(s1, s2):
     '''
@@ -635,13 +637,25 @@ class Node(object):
         self.nextnode = None
 
 
+# def reverse(head):
+#     current = head
+#     nextnode = previous = None
+
+#     while current:
+#         nextnode, current.nextnode = current.nextnode, previous
+#         previous, current = current, nextnode
+
+#     return previous
+
 def reverse(head):
     current = head
-    nextnode = previous = None
+    previous = nextnode = None
 
     while current:
-        nextnode, current.nextnode = current.nextnode, previous
-        previous, current = current, nextnode
+        nextnode = current.nextnode
+        current.nextnode = previous
+        previous = current
+        current = nextnode
 
     return previous
 
@@ -676,7 +690,8 @@ def nth(head, n):
 
     while n:
         if not right.nextnode:
-            return 'Linked List is not long enough.'
+            raise LookupError('Error: n is larger than the linked list')
+            # return 'Linked List is not long enough.'
         else:
             right = right.nextnode
 
@@ -688,7 +703,7 @@ def nth(head, n):
 
     print(left.value)
     print(right.value)
-    return right
+    return left
 
 
 a = Node(1)
@@ -700,4 +715,171 @@ a.nextnode = b
 b.nextnode = c
 c.nextnode = d
 
-print(nth(a, 1))
+# print(nth(a, 2))
+
+# 94. Recursive Homework Example Problems
+
+
+# def factorial(n):
+
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * factorial(n-1)
+
+
+def cumulative_sum(n):
+
+    if n == 0:
+        return 0
+    else:
+        return n + cumulative_sum(n-1)
+
+
+def sum_of_parts(n):
+
+    n_str = str(n)
+
+    if len(n_str) == 1:
+        return int(n_str)
+
+    return int(n_str[:1]) + sum_of_parts(n_str[1:])
+
+
+def sum_func(n):
+
+    if len(str(n)) == 1:
+        return n
+
+    return n % 10 + sum_func(n/10)
+
+
+def word_split(phrase, list_of_words, output=None):
+    if output is None:
+        output = []
+
+    for word in list_of_words:
+
+        if phrase.startswith(word):
+
+            output.append(word)
+
+            return word_split(phrase[len(word):], list_of_words, output)
+
+    return output
+
+
+factorial_memo = {}
+
+
+def factorial(n):
+
+    if n < 2:
+        return 1
+
+    if n not in factorial_memo:
+        factorial_memo[n] = n * factorial(n-1)
+        # print(factorial_memo)
+
+    return factorial_memo[n]
+
+
+# print(factorial(11))
+
+class Memoize:
+
+    def __init__(self, func):
+        self.func = func
+        self.memo = {}
+
+    def __call__(self, *args):
+        if args not in self.memo:
+            self.memo[args] = self.func(*args)
+        return self.memo[args]
+
+# 97. Recursion Interview Problem 1
+
+
+# def reverse(s):
+
+#     if len(s) == 1:
+#         return s
+
+#     return s[-1] + reverse(s[:-1])
+
+
+# 99. Recursion Interview Problem 2
+'''
+Write a function that uses recursion to output a list of all the possible permutations of that string.
+'''
+
+
+def permute(s):
+    # print(list(itertools.combinations(s, 2)))
+    # return list(itertools.permutations(s))
+    out = []
+
+    # Base Case
+    if len(s) == 1:  # ends at 1 because permutation of 1 is just the same
+        out = [s]
+
+    else:
+        # go through all the letters of the strings and find their permutations
+        for i, let in enumerate(s):
+            # finds all the permutations the rest of the letters can make
+            for perm in permute(s[:i] + s[i+1:]):
+                # for each permutation we find, we'll add it to out
+                out += [let + perm]
+
+    return out
+
+
+# print(permute('abc'))
+
+def permutation(s):
+    if len(s) == 0:
+        return []
+
+    if len(s) == 1:
+        return s
+
+    result = []
+
+    for i in range(len(s)):
+        current_letter = s[i]
+        other_letters = s[:i] + s[i+1:]
+
+        for perm in permutation(other_letters):
+            result += [current_letter + perm]
+
+    return result
+
+
+print(permutation('abc'))
+
+'''
+const permuation = s => {
+
+  if (s.length == 0) {
+    return [];
+  }
+
+  if (s.length == 1) {
+    return s;
+  }
+
+  const result = [];
+
+  for (let i = 0; i < s.length; i++) {
+    
+    const char = s[i];
+    const other_chars = s.slice(0,i) + s.slice(i+1);
+    
+    for (let perm of permuation(other_chars)) {
+      result.push(char + perm);
+    }
+  }
+
+  return result;
+};
+'''
